@@ -24,19 +24,19 @@ public class KVPair<K extends Comparable<K>,V> {
 				new KVPair<>("Lion", 1),new KVPair<>("Lion", 1)
 				,new KVPair<>("River", 1),new KVPair<>("River", 1));
 		
-		System.out.println(A+"\n");
-		System.out.println(A.whereAll("Lion"));
+		System.out.println(A);
 		Conslist<KVPair<String,Integer>> b = A.ReduceByKey();
 		System.out.println(b);
 		
 		HasFilter h = new HasFilter() {
 			@Override
-			public KVPair<String, Integer> lambda(KVPair<String, Integer> e) {
-				return new KVPair<String, Integer>(e.key(), A.whereAll(e.key()));
+			public KVPair<String, Integer> lambda(KVPair<String, Integer> e,Conslist<KVPair<String,Integer>> A) {
+				return new KVPair<String, Integer>(e.key, A.whereAll(e.key));
 			}
 		}; 
+		
 		Conslist<KVPair<String,Integer>> b_m = A.Map_Key(h);
-		System.out.println(b_m);
+		b_m.print();
 
 	}
 }

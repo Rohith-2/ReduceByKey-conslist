@@ -2,8 +2,6 @@ package prroj;
 
 
 public abstract class Conslist<T> {
-	//public KVPair<String, Integer> head;
-	//public Conslist<KVPair<String, Integer>> tail;
 	abstract public KVPair<String, Integer> head();
 	abstract public Conslist<KVPair<String, Integer>> tail();
 	public boolean isEmpty() {return true;}

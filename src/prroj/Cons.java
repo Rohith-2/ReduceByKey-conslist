@@ -49,6 +49,7 @@ public class Cons<T> extends Conslist<T>{
 		public Conslist<KVPair<String, Integer>> Map_Key(HasFilter h) {
 			return null;
 		}
+
 	};
 
 	public Cons(KVPair<String,Integer> head,Conslist<KVPair<String,Integer>> tail) {
@@ -135,10 +136,19 @@ public class Cons<T> extends Conslist<T>{
 	public Conslist<KVPair<String, Integer>> Map_Key(HasFilter H){
 		return Map_ReduceByKey(H);
 	}
+	
+	@SuppressWarnings("unchecked")
 	public Conslist<KVPair<String, Integer>> Map_ReduceByKey(HasFilter H) {
-		return new Cons<KVPair<String, Integer>>(H.lambda(head),tail.Map_ReduceByKey(H)); 	
+		Conslist<KVPair<String, Integer>> newTail =  tail;
+		while(newTail.has(head.key)) newTail = ((Cons<KVPair<String, Integer>>) newTail).tail;
+		return new Cons<KVPair<String, Integer>>(H.lambda((KVPair<String, Integer>)head,(Conslist<KVPair<String, Integer>>) this),(Conslist<KVPair<String, Integer>>) newTail.Map_Key(H));  	
 	}
-
+	
+	public void print() {
+		System.out.print(head+" ");
+		//Tail is also a conslist so it keeps recursive.
+		if(tail!=null)tail.print();
+	}
 	@Override
 	public String toString() {
 	        return head.toString() + " " + tail.toString();
