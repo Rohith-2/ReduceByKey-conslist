@@ -11,7 +11,7 @@ public static void main(String[] args) throws IOException {
 	String[] words  = {};
     String line;
     
-    InputStream fis = new FileInputStream("/Users/rohith/Desktop/rep.txt");
+    InputStream fis = new FileInputStream("rep.txt");
     InputStreamReader isr = new InputStreamReader(fis, Charset.forName("UTF-8"));
     BufferedReader br = new BufferedReader(isr);
     
