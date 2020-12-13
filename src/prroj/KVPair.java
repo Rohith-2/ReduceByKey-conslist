@@ -37,6 +37,9 @@ public class KVPair<K extends Comparable<K>,V> {
 		
 		Conslist<KVPair<String,Integer>> b_m = A.Map_Key(h);
 		b_m.print();
+		System.out.println("");
+		ConsSet<KVPair<String, Integer>> b_t = A.tree_RbK();
+		b_t.print();
 
 	}
 }

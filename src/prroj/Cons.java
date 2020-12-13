@@ -50,6 +50,12 @@ public class Cons<T> extends Conslist<T>{
 			return null;
 		}
 
+		@Override
+		public ConsSet<KVPair<String, Integer>> tree_RbK() {
+			return null;
+		}
+
+
 	};
 
 	public Cons(KVPair<String,Integer> head,Conslist<KVPair<String,Integer>> tail) {
@@ -138,11 +144,23 @@ public class Cons<T> extends Conslist<T>{
 	}
 	
 	@SuppressWarnings("unchecked")
-	public Conslist<KVPair<String, Integer>> Map_ReduceByKey(HasFilter H) {
+	private Conslist<KVPair<String, Integer>> Map_ReduceByKey(HasFilter H) {
 		Conslist<KVPair<String, Integer>> newTail =  tail;
 		while(newTail.has(head.key)) newTail = ((Cons<KVPair<String, Integer>>) newTail).tail;
 		return new Cons<KVPair<String, Integer>>(H.lambda((KVPair<String, Integer>)head,(Conslist<KVPair<String, Integer>>) this),(Conslist<KVPair<String, Integer>>) newTail.Map_Key(H));  	
 	}
+	
+	public ConsSet<KVPair<String, Integer>> tree_RbK(){
+		//return tail.tree_Reduce(NonEmpty.Empty);
+		ConsSet<KVPair<String,Integer>> s = new NonEmpty<>(head);
+		Conslist<KVPair<String, Integer>> newTail =  tail;
+		while(newTail!=Nil) {
+			s=s.add(((Cons<KVPair<String, Integer>>)newTail).head);
+			newTail=((Cons<KVPair<String, Integer>>)newTail).tail;
+		}
+		return s;
+	}
+	
 	
 	public void print() {
 		System.out.print(head+" ");
