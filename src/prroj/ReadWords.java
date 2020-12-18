@@ -16,7 +16,7 @@ public static void main(String[] args) throws IOException {
     InputStreamReader isr = new InputStreamReader(fis, Charset.forName("UTF-8"));
     BufferedReader br = new BufferedReader(isr);
     
-    
+    //Reading Line by Line and appending to the Nil conslist..
 	while ((line = br.readLine()) != null) {
         words= line.replaceAll("[^a-zA-Z ]", "").toLowerCase().split("\\s+");
         Arrays.sort(words);
@@ -25,14 +25,20 @@ public static void main(String[] args) throws IOException {
         }
     }
 	 
-	System.err.println("Original Conslist:");
-	System.out.println(b+"\n");
+	System.out.println("Original Conslist:");
+	System.out.println(b);
+	System.out.println(" ");
+	/* --------------------------------------------------------*/
+	
 	System.err.println("Iterative Method:");
 	long T1 =  System.nanoTime();
 	Conslist<KVPair<String, Integer>> A = b.ReduceByKey();
 	System.out.println("Execution Time in Nanoseconds : "+( System.nanoTime()-T1));
 	A.print();
 	System.out.println("\n");
+	
+	/* --------------------------------------------------------*/
+	
 	System.err.println("Map Method:");
 
 	HasFilter h = new HasFilter() {
@@ -45,12 +51,15 @@ public static void main(String[] args) throws IOException {
 	Conslist<?> a = b.Map_Key(h);
 	System.out.println("Execution Time in Nanoseconds : "+(System.nanoTime()-T11));
 	a.print();
-	System.out.println("");
+	System.out.println("\n");
+	
+	/* --------------------------------------------------------*/
+	
 	System.err.println("Tree Method:");
 	long T111 =  System.nanoTime();
 	ConsSet<KVPair<String, Integer>> b_t = b.tree_RbK();
 	System.out.println("Execution Time in Nanoseconds : "+(System.nanoTime()-T111));
 	b_t.print();
-	
+	//*/
   }
 }
