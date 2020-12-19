@@ -23,8 +23,9 @@ For example,<br>
 Apple : 1 , Apple : 1 , Apple : 1, Bat : 1 , Bee : 1 , Bee : 1   --->  Apple : 3, Bat : 1 , Bee : 2 
 
 <hr style=\"border:1px solid gray\"> </hr>
-For a Benchmark test, each of these functions were measured 50 times and taken of mean of.
 
+### Performance of Implimented Methods:
+For a Benchmark test, each of these functions were measured 50 times and taken of mean of (Time Performance).
 Performance of our ReduceByKey via 3 methods measured in nanoseconds and bytes respectively:<br>
 
 |     Metric      | Iterative Method | Map method |  Tree Method Iteration | Tree Method Reccursion |
