@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch MemTest",
+            "request": "launch",
+            "mainClass": "prroj.MemTest",
+            "projectName": "conslist"
+        },
+        {
+            "type": "java",
             "name": "Launch ReadWords",
             "request": "launch",
             "mainClass": "prroj.ReadWords",

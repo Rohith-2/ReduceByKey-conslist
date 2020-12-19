@@ -1,4 +1,14 @@
 # Conslist
+
+<hr style=\"border:0.5px solid gray\"> </hr>
+
+## AIE203-Data Structures and Algorithms
+### Authors:
+1. Anirudh Bhaskar
+2. Rohith Ramakrishnan
+
+<hr style=\"border:0.5px solid gray\"> </hr>
+
 ## Implementation of ReduceByKey via Conslist <br> 
 Using the three methods mentioined below, a benchmark test was performed via loading the same text file sample measured in nano seconds(ns) <br>
 Using the iterative method we implicitly expolit the immutable nature of the conslist unlike the other two methods.<br> 
@@ -14,11 +24,16 @@ Apple : 1 , Apple : 1 , Apple : 1, Bat : 1 , Bee : 1 , Bee : 1   --->  Apple : 3
 <hr style=\"border:1px solid gray\"> </hr>
 For a Benchmark test, each of these functions were measured 50 times and taken of mean of.
 
-Performance of our ReduceByKey via 3 methods measured in nanoseconds:<br>
+Performance of our ReduceByKey via 3 methods measured in nanoseconds and bytes respectively:<br>
 
-| Iterative Method | Map method |  Tree Method Iteration | Tree Method Reccursion |
-|------------------|------------|------------------------|------------------------|
-|     64136        |   77013    |         167859         |        106815          |
+|     Metric      | Iterative Method | Map method |  Tree Method Iteration | Tree Method Reccursion |
+|-----------------|------------------|------------|------------------------|------------------------|
+|      Time       |     64136        |   77013    |         167859         |        106815          |
+|     Memory      |    1235976       |  1236440   |         1299376        |       1299376          |
+
+<img src="/Users/rohith/Desktop/Screenshot 2020-12-20 at 12.39.32 AM.png"
+     alt="Metric Chart"
+     style="float: left; margin-right: 10px;" />
 
 <hr style=\"border:1px solid gray\"> </hr>
 
@@ -78,7 +93,7 @@ while(tail!=Nil){
     tail->tail.tail;
 }
 ```
-#### Reccursion Bsed :
+#### Reccursion Based :
 ```js
 function tree_RbK_r(){
 	return tree_r(new NonEmpty<>(head),tail);

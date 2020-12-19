@@ -5,6 +5,12 @@ import java.nio.charset.Charset;
 import java.util.Arrays;
 
 public class ReadWords {
+
+private static final long MEGABYTE = 1024L * 1024L;
+
+public static long bytesToMegabytes(long bytes) {
+	return bytes / MEGABYTE;
+}
 @SuppressWarnings("resource")
 public static void main(String[] args) throws IOException {
 	Conslist<KVPair<String,Integer>> b = Cons.Nil;
@@ -31,12 +37,14 @@ public static void main(String[] args) throws IOException {
 	/* --------------------------------------------------------*/
 	
 	System.err.println("Iterative Method:");
+	
 	long aa=0;
 	for(int i=0;i<=50;i++){
 	long T1 =  System.nanoTime();
 	b.ReduceByKey();
 	aa += System.nanoTime()-T1;
 	}
+	
 	aa/=50;
 	//System.out.println("Execution Time in Nanoseconds : "+aa);
 	Conslist<KVPair<String, Integer>> A = b.ReduceByKey();
@@ -76,7 +84,6 @@ public static void main(String[] args) throws IOException {
 	t2/=50;
 	
 	long R = 0;
-	System.err.println("Tree Method:");
 	for(int i=0;i<=50;i++){
 	long T111 =  System.nanoTime();
 	b.tree_RbK_r();
@@ -93,6 +100,6 @@ public static void main(String[] args) throws IOException {
 	System.out.println("| Iterative Method | Map method | Tree Method Iteration| Tree Method Reccursion |");
 	System.out.println("|------------------|------------|----------------------|------------------------|");
 	System.out.println("|     "+aa+"        |   "+m+"    |         "+t2+"       |          "+R+"        |");
-	System.out.println("|-------------------------------------------------------------------------------|");
+	System.out.println("|------------------|------------|----------------------|------------------------|");
   }
 }
