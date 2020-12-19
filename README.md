@@ -4,14 +4,15 @@
 
 ## AIE203-Data Structures and Algorithms
 ### Authors:
-1. Anirudh Bhaskar
-2. Rohith Ramakrishnan
+1. Anirudh Bhaskar      -  CB.EN.U4AIE19007
+2. Rohith Ramakrishnan  -  CB.EN.U4AIE19052
 
 <hr style=\"border:0.5px solid gray\"> </hr>
 
 ## Implementation of ReduceByKey via Conslist <br> 
-Using the three methods mentioined below, a benchmark test was performed via loading the same text file sample measured in nano seconds(ns) <br>
-Using the iterative method we implicitly expolit the immutable nature of the conslist unlike the other two methods.<br> 
+Using the three methods mentioned below, a benchmark test consisting of memory and time, was performed via loading the same text file sample. <br>
+
+<hr style=\"border:2px solid gray\"> </hr>
 
 ### Reduce By Key 
 This function merges or sums the values for each key held in a KVPair Object with/without using a Map Function.<br>
