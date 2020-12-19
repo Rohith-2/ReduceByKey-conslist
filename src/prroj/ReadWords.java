@@ -33,7 +33,7 @@ public static void main(String[] args) throws IOException {
 	System.err.println("Iterative Method:");
 	long T1 =  System.nanoTime();
 	Conslist<KVPair<String, Integer>> A = b.ReduceByKey();
-	System.out.println("Execution Time in Nanoseconds : "+( System.nanoTime()-T1));
+	System.out.println("Execution Time in Nanoseconds :"+String.format("%.2f", (System.nanoTime()-T1) /100000));
 	A.print();
 	System.out.println("\n");
 	
@@ -49,7 +49,7 @@ public static void main(String[] args) throws IOException {
 	}; 
 	long T11 =  System.nanoTime();
 	Conslist<?> a = b.Map_Key(h);
-	System.out.println("Execution Time in Nanoseconds : "+(System.nanoTime()-T11));
+	System.out.println("Execution Time in Nanoseconds : "+(long)(System.nanoTime()-T11));
 	a.print();
 	System.out.println("\n");
 	
@@ -58,8 +58,8 @@ public static void main(String[] args) throws IOException {
 	System.err.println("Tree Method:");
 	long T111 =  System.nanoTime();
 	ConsSet<KVPair<String, Integer>> b_t = b.tree_RbK();
-	System.out.println("Execution Time in Nanoseconds : "+(System.nanoTime()-T111));
-	b_t.print();
+	System.out.println("Execution Time in Nanoseconds : "+(long)(System.nanoTime()-T111));
+	//b_t.print();
 	//*/
   }
 }
