@@ -7,24 +7,24 @@ Using the iterative method we implicitly expolit the immutable nature of the con
 This function merges or sums the values for each key held in a KVPair Object with/without using a Map Function.<br>
 A KVPair object hold a key (String) and value (int). Using ReduceByKey we will be creating a set of keys with no repetitions with a merged/summed value corresponding to the key.
 In the Scope of this project, given a text file, the Conslist of KVPair object will hold each instance of the words occuring and using ReduceByKey a Set of all the words along will its word count can be computed.<br>
-For example,
+For example,<br>
 Apple : 1 , Apple : 1 , Apple : 1, Bat : 1 , Bee : 1 , Bee : 1   --->  Apple : 3, Bat : 1 , Bee : 2 
 
-
+"<hr style=\"border:1px solid gray\"> </hr>"
 Performance of our ReduceByKey via 3 methods measured in nanoseconds:<br>
-               Benchmark Test Table
 
 | Iterative Method | Map method |  Tree Method |
 |------------------|------------|--------------|
 |    70375         |   127011   |    207619    |
 
+"<hr style=\"border:1px solid gray\"> </hr>"
 ### Implementation of the Iterative Method:
 Via the Iterative Method we will be locally violating immutabilty to achieve the Reduce-By-Key funtion.<br>
 This method will call for two functions has() and where().<br>
 has() is a boolean function to inspect the presence of a key in any KVPair object existing in a Conslist.<br>
 where(string) traverses through the conslist and returns the KVPair whose key matches with the given string.<br>
 
-
+"<hr style=\"border:1px solid gray\"> </hr>"
 ### Implementation of the Map Method:
 In the map method our aim is recursively check whether a certain word is present in the created conslist from our sample text file<br>
 The main functions we use are Hasfilter and Whereall<br>
