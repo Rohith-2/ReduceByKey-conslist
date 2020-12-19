@@ -74,15 +74,25 @@ public static void main(String[] args) throws IOException {
 	t2+=System.nanoTime()-T111;
 	}
 	t2/=50;
-	ConsSet<KVPair<String, Integer>> b_t = b.tree_RbK();
+	
+	long R = 0;
+	System.err.println("Tree Method:");
+	for(int i=0;i<=50;i++){
+	long T111 =  System.nanoTime();
+	b.tree_RbK_r();
+	R+=System.nanoTime()-T111;
+	}
+	R/=50;
+	
+	ConsSet<KVPair<String, Integer>> b_t = b.tree_RbK_r();
 	//System.out.println("Execution Time in Nanoseconds : "+t2+"\n");
 	b_t.print();
 	System.out.println(" ");
-	System.out.println("               Benchmark Test Table");
-	System.out.println("|..............................................|");
-	System.out.println("| Iterative Method | Map method |  Tree Method |");
-	System.out.println("|..................|............|..............|");
-	System.out.println("|    "+aa+"         |   "+m+"   |    "+t2+"    |");
-	System.out.println("|..............................................|");
+	System.out.println("                           Benchmark Test Table                                  ");
+	System.out.println("|-------------------------------------------------------------------------------|");
+	System.out.println("| Iterative Method | Map method | Tree Method Iteration| Tree Method Reccursion |");
+	System.out.println("|------------------|------------|----------------------|------------------------|");
+	System.out.println("|     "+aa+"        |   "+m+"    |         "+t2+"       |          "+R+"        |");
+	System.out.println("|-------------------------------------------------------------------------------|");
   }
 }

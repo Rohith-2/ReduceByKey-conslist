@@ -55,6 +55,15 @@ public class Cons<T> extends Conslist<T>{
 			return null;
 		}
 
+		@Override
+		public Conslist<KVPair<String, Integer>> ReduceByKey() {
+			return null;
+		}
+		@Override
+		public ConsSet<KVPair<String, Integer>> tree_RbK_r() {
+			return null;
+		}
+
 
 	};
 
@@ -161,6 +170,15 @@ public class Cons<T> extends Conslist<T>{
 		return s;
 	}
 	
+	public ConsSet<KVPair<String,Integer>> tree_RbK_r(){
+	return tree_r(new NonEmpty<>(head),tail);
+
+	}
+	private ConsSet<KVPair<String,Integer>> tree_r(ConsSet<KVPair<String,Integer>> s , Conslist<KVPair<String, Integer>> t){
+		Conslist<KVPair<String, Integer>> n_t = t.tail();
+		if(n_t!=Nil)return tree_r(s.add(t.head()),n_t);
+		return s;
+	}
 	
 	public void print() {
 		System.out.print(head+" ");
