@@ -31,7 +31,7 @@ Performance of our ReduceByKey via 3 methods measured in nanoseconds and bytes r
 |      Time       |     64136        |   77013    |         167859         |        106815          |
 |     Memory      |    1235976       |  1236440   |         1299376        |       1299376          |
 
-<img src="/Users/rohith/Desktop/Screenshot 2020-12-20 at 12.39.32 AM.png"
+<img src="https://github.com/Rohith-2/conslist/blob/master/MetricPlot.png"
      alt="Metric Chart"
      style="float: left; margin-right: 10px;" />
 
