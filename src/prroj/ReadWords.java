@@ -31,35 +31,58 @@ public static void main(String[] args) throws IOException {
 	/* --------------------------------------------------------*/
 	
 	System.err.println("Iterative Method:");
+	long aa=0;
+	for(int i=0;i<=50;i++){
 	long T1 =  System.nanoTime();
+	b.ReduceByKey();
+	aa += System.nanoTime()-T1;
+	}
+	aa/=50;
+	//System.out.println("Execution Time in Nanoseconds : "+aa);
 	Conslist<KVPair<String, Integer>> A = b.ReduceByKey();
-	System.out.println("Execution Time in Nanoseconds :"+String.format("%.2f", (System.nanoTime()-T1) /100000));
 	A.print();
 	System.out.println("\n");
 	
 	/* --------------------------------------------------------*/
 	
 	System.err.println("Map Method:");
-
+	long m =0;
+	
 	HasFilter h = new HasFilter() {
 		@Override
 		public KVPair<String, Integer> lambda(KVPair<String, Integer> e,Conslist<KVPair<String,Integer>> b) {
 			return new KVPair<String, Integer>(e.key, b.whereAll(e.key));
 		}
 	}; 
+	for(int i=0;i<=50;i++){
 	long T11 =  System.nanoTime();
+	b.Map_Key(h);
+	m += System.nanoTime()-T11;
+	}
+	m/=50;
 	Conslist<?> a = b.Map_Key(h);
-	System.out.println("Execution Time in Nanoseconds : "+(long)(System.nanoTime()-T11));
+	//System.out.println("Execution Time in Nanoseconds : "+m);
 	a.print();
 	System.out.println("\n");
 	
 	/* --------------------------------------------------------*/
-	
+	long t2 = 0;
 	System.err.println("Tree Method:");
+	for(int i=0;i<=50;i++){
 	long T111 =  System.nanoTime();
+	b.tree_RbK();
+	t2+=System.nanoTime()-T111;
+	}
+	t2/=50;
 	ConsSet<KVPair<String, Integer>> b_t = b.tree_RbK();
-	System.out.println("Execution Time in Nanoseconds : "+(long)(System.nanoTime()-T111));
-	//b_t.print();
-	//*/
+	//System.out.println("Execution Time in Nanoseconds : "+t2+"\n");
+	b_t.print();
+	System.out.println(" ");
+	System.out.println("               Benchmark Test Table");
+	System.out.println("|..............................................|");
+	System.out.println("| Iterative Method | Map method |  Tree Method |");
+	System.out.println("|..................|............|..............|");
+	System.out.println("|    "+aa+"         |   "+m+"   |    "+t2+"    |");
+	System.out.println("|..............................................|");
   }
 }
