@@ -11,8 +11,11 @@ private static final long MEGABYTE = 1024L * 1024L;
 public static long bytesToMegabytes(long bytes) {
 	return bytes / MEGABYTE;
 }
+
 @SuppressWarnings("resource")
 public static void main(String[] args) throws IOException {
+	
+	//Reading A text File and storing it in a Conslist..
 	Conslist<KVPair<String,Integer>> b = Cons.Nil;
 	
 	String[] words  = {};
@@ -34,18 +37,21 @@ public static void main(String[] args) throws IOException {
 	System.out.println("Original Conslist:");
 	System.out.println(b);
 	System.out.println(" ");
+	
 	/* --------------------------------------------------------*/
+	//Initialising the Benchmark Tests via Different method
+	int i_b = 50;
 	
 	System.err.println("Iterative Method:");
 	
 	long aa=0;
-	for(int i=0;i<=50;i++){
+	for(int i=0;i<=i_b;i++){
 	long T1 =  System.nanoTime();
 	b.ReduceByKey();
 	aa += System.nanoTime()-T1;
 	}
 	
-	aa/=50;
+	aa/=i_b;
 	//System.out.println("Execution Time in Nanoseconds : "+aa);
 	Conslist<KVPair<String, Integer>> A = b.ReduceByKey();
 	A.print();
@@ -62,44 +68,50 @@ public static void main(String[] args) throws IOException {
 			return new KVPair<String, Integer>(e.key, b.whereAll(e.key));
 		}
 	}; 
-	for(int i=0;i<=50;i++){
+	for(int i=0;i<=i_b;i++){
 	long T11 =  System.nanoTime();
 	b.Map_Key(h);
 	m += System.nanoTime()-T11;
 	}
-	m/=50;
+	m/=i_b;
 	Conslist<?> a = b.Map_Key(h);
 	//System.out.println("Execution Time in Nanoseconds : "+m);
 	a.print();
 	System.out.println("\n");
 	
 	/* --------------------------------------------------------*/
+	
 	long t2 = 0;
 	System.err.println("Tree Method:");
-	for(int i=0;i<=50;i++){
+	ConsSet<KVPair<String, Integer>> b_t = b.tree_RbK();
+	//System.out.println("Execution Time in Nanoseconds : "+t2+"\n");
+	b_t.print();
+	
+	for(int i=0;i<=i_b;i++){
 	long T111 =  System.nanoTime();
 	b.tree_RbK();
 	t2+=System.nanoTime()-T111;
 	}
-	t2/=50;
+	t2/=i_b;
 	
 	long R = 0;
-	for(int i=0;i<=50;i++){
+	for(int i=0;i<=i_b;i++){
 	long T111 =  System.nanoTime();
 	b.tree_RbK_r();
 	R+=System.nanoTime()-T111;
 	}
-	R/=50;
+	R/=i_b;
 	
-	ConsSet<KVPair<String, Integer>> b_t = b.tree_RbK_r();
-	//System.out.println("Execution Time in Nanoseconds : "+t2+"\n");
-	b_t.print();
+
+	
+	/*---------------------------------------------------------*/
+	
 	System.out.println(" ");
-	System.out.println("                           Benchmark Test Table                                  ");
+	System.err.println("                            Benchmark Test Table                                  ");
 	System.out.println("|-------------------------------------------------------------------------------|");
 	System.out.println("| Iterative Method | Map method | Tree Method Iteration| Tree Method Reccursion |");
 	System.out.println("|------------------|------------|----------------------|------------------------|");
-	System.out.println("|     "+aa+"        |   "+m+"    |         "+t2+"       |          "+R+"        |");
+	System.out.println("|      "+aa+"       |   "+m+"   |        "+t2+"        |          "+R+"        |");
 	System.out.println("|------------------|------------|----------------------|------------------------|");
   }
 }
